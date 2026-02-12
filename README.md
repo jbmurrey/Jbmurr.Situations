@@ -111,7 +111,7 @@ public static class SampleMoqSituationConfiguration
         // Register services that are undergoing tests
         builder.RegisterService<EmployeeCreationService>();
 
-        // For services that need no setup, you can register them as mocks.
+        // For services that need no setup or verification, you can register them as mocks.
         builder.AddMock<ILoggingService>();
 
         // This is how you map a Moq setup to a to an enum value used to invoke that set up later during the test run.

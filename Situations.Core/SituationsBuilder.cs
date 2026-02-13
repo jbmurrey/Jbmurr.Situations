@@ -2,11 +2,11 @@
 
 namespace Situations.Core
 {
-    public abstract class SituationsBuilder<SituationEnum> 
+    public abstract class SituationsBuilder<SituationEnum>
         where SituationEnum : Enum
     {
         protected IServiceCollection ServiceCollection { get; } = new ServiceCollection();
-        protected Dictionary<SituationEnum, ISituationInvoker> SituationInvokers = [];
+        protected Dictionary<SituationEnum, ISituationInvoker> SituationInvokers { get; } = [];
 
         public void RegisterService<TService>()
             where TService : class

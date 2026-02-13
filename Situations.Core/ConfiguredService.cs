@@ -4,7 +4,6 @@ using Situations.Core.Exceptions;
 namespace Situations.Core
 {
     public class ConfiguredService<TService, SituationEnum> : IDisposable
-        where SituationEnum : Enum
         where TService : class
         where SituationEnum : Enum
     {
@@ -27,7 +26,7 @@ namespace Situations.Core
 
             _situationInvokers.TryGetValue(situationsEnum, out var situationInvoker);
 
-            UnregisteredSituationException.ThrowIf(situationInvoker == null || situationInvoker.Invoke == null, $"Situation: {situationsEnum} has not been registered with an invocation action.");
+            UnregisteredSituationException.ThrowIf(situationInvoker?.Invoke == null, $"Situation: {situationsEnum} has not been registered with an invocation action.");
 
             object? args = situationInvoker!.ParameterFactory(_serviceScope.ServiceProvider);
             Action<object?> action = situationInvoker.Invoke!;

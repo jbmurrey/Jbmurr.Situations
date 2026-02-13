@@ -4,6 +4,7 @@ using Situations.Core.Exceptions;
 namespace Situations.Core
 {
     public class ConfiguredService<TService, SituationEnum> : IDisposable
+        where SituationEnum : Enum
         where TService : class
         where SituationEnum : Enum
     {
